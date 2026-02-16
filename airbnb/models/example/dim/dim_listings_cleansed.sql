@@ -1,3 +1,10 @@
+{{
+  config(
+    materialized = 'incremental',
+    on_schema_change='fail'
+    )
+}}
+
 WITH src_listings AS (
   SELECT
     *
