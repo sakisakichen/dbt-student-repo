@@ -1,6 +1,7 @@
 {{
   config(
     materialized = 'incremental',
+    unique_key = 'listing_id',
     on_schema_change='fail'
     )
 }}
