@@ -32,18 +32,22 @@ models:
        data_tests:
          - positive_values
 
-  - name: dim_hosts_cleansed
-    config:
-        contract:
-          enforced: true
+     - name: dim_hosts_cleansed
+    description: Cleansed table for the Airbnb hosts
     columns:
       - name: host_id
-        data_type: integer
+        description: The id of the host. This is the primary key.
+        tests:
+          - not_null
+          - unique
+      
       - name: host_name
-        data_type: string
+        description: The name of the host
+        tests:
+          - not_null
+      
       - name: is_superhost
-        data_type: string
-      - name: updated_at
-        data_type: timestamp
-      - name: created_at
-        data_type: timestamp
+        description: Defines whether the hosts is a superhost.
+        tests:
+          - accepted_values:
+              values: ['t', 'f']
